@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+    input.test {
+        position: fixed;
+    }
+</style>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="./src/style/style.css">
+</head>
+<body>
+    <div class="content test" dataKey="teset">Hello world</div>
+
+    <input type="text" value="Here">
+
+    <div class="slider">
+        <div class="page active--slider">
+                <span>OK</span>
+                <a href="#">test 1</a>
+        </div>
+        <div class="page">
+            <span>GOOD</span>
+            <a href="#">test 2</a>
+        </div>
+        <div class="page">
+                <span>SUPER</span>
+                <a href="#">test 3</a>
+        </div>
+        <div class="page">
+            <span>NON</span>
+            <a href="#">test 4</a></div>
+        <div class="page">
+                <span>BOF</span>
+                <a href="#">test 5</a>
+        </div>
+    </div>
+
+    <div class="playerVideo"></div>
+
+    <script src="./src/js/librairy.js"></script>
+    <script src="./src/js/slider.js"></script>
+    <script src="./src/js/player.js"></script>
+
+
+    <script type="text/javascript">
+        function testRandom(min, max) {
+            for (let i = 0; i < 1000; i++) {
+                let test = rand(min, max);
+                if (test > max && test > min) console.log("ERROR - Depasse le max");
+                else if (test < min && test < max) console.log("ERROR - Plus petit que le min");
+            }
+            console.log("RAND TEST DONE");
+        }
+
+        // testRandom(12 , 0);
+
+        // Test Manipulation DOM
+        $(".content")
+        .style("color", "#880000")
+        .style("font-size", "2em")
+        .on("click", function () {
+            console.log("ok");
+            
+        });
+
+        function reqSuccess(req) {
+            console.log("success");
+            console.log(req.response);
+        }
+
+        function reqError(req) {
+            console.log("error");
+            
+            console.log(req);  
+        }   
+
+        // Test Call AJAX
+        // let test = ajax("GET", "https://developer.mozilla.org/fr/docs/Web/API/XMLHttpRequest", false)
+        // .response(reqSuccess, reqError)
+        // .send();
+
+        // console.log(test);      
+
+
+        // Test creation DOM
+        // let test = create("button")
+        // .on('click', function () {
+        //     $('div').remove(hi.dom)
+        // }).add("class", "test").put("click here");
+
+        // let hi = create("input")
+        // .add("type", "text")
+        // .add("class", "test testV2")
+        // .put("vairasdfsd");
+        
+        // $('div').append(test.dom).append(hi.dom);
+
+        // console.log($('input.test').posY);
+
+        // Test Slider
+        let testSlider = slider('div.slider').addControle().addAuto(-1, 'r').addKey('e', 'r');
+        console.log(testSlider);
+        
+
+        let testPlayer = player('.playerVideo', 'audio').create('./src/music/chansonDeCraonne.mp3', true);
+        console.log(testPlayer);
+        
+        
+    </script>
+</body>
+</html>
