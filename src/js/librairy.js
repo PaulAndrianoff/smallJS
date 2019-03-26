@@ -2,7 +2,7 @@
  * Created by Paul Andrianoff
  */
 
- 
+
 
 /**
  * Element object
@@ -77,7 +77,7 @@ function $(selector) {
      * return object
      */
     self.on = function (event, callback) {
-        self.element["on" + event] = callback;
+        self.element.addEventListener(event, callback)
 
         return self;
     }
@@ -114,9 +114,10 @@ function $(selector) {
      * element = Dom element or array of Dom element
      */
     self.append = function (element) {
-        if (typeof element == Array) {
+        
+        if (typeof element == 'object') {
             for (let i = 0; i < element.length; i++) {
-                self.element.append(element[i]); 
+                self.element.append(element[i]);  
             }
         } else self.element.append(element);
 
@@ -222,7 +223,7 @@ function create(elementType) {
      * return object
      */
     self.on = function (event, callback) {
-        self.dom["on" + event] = callback;
+        self.dom.addEventListener(event, callback)
 
         return self;
     }
